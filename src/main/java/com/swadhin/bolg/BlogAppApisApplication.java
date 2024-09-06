@@ -15,6 +15,7 @@ import com.swadhin.bolg.config.AppConstants;
 import com.swadhin.bolg.entities.Role;
 import com.swadhin.bolg.repository.RoleRepo;
 
+
 @SpringBootApplication
 public class BlogAppApisApplication implements CommandLineRunner {
 	
@@ -62,4 +63,6 @@ public class BlogAppApisApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

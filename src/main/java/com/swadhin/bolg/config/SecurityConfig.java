@@ -49,7 +49,7 @@ public class SecurityConfig {
         		.requestMatchers(HttpMethod.DELETE).permitAll()
         		.requestMatchers(HttpMethod.POST).permitAll()
         		.requestMatchers(HttpMethod.PUT).permitAll()
-        		.requestMatchers("/v3/api-docs").permitAll()
+        		.requestMatchers("url").permitAll()
         		.anyRequest().authenticated())
         .httpBasic(httpBasic -> {})
         .exceptionHandling(ex -> ex.authenticationEntryPoint(point))
@@ -59,6 +59,17 @@ public class SecurityConfig {
 		
 		return http.build();
 	}
+	
+	
+	public static final String[] url = {
+			"/api/v1/auth/**",
+			"/v3/api-docs",
+			"/v2/api-docs",
+			"/swagger-resourses/**",
+			"/swagger-ui/**",
+			"webjars/**"
+			
+	};
 	
 	
 	@Bean
