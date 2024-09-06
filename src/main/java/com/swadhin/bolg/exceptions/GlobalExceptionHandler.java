@@ -17,7 +17,7 @@ import com.swadhin.bolg.payloads.ApiResponse;
 public class GlobalExceptionHandler {
 
 
-	@ExceptionHandler
+	@ExceptionHandler(ResourseNotFoundException.class)
 	public ResponseEntity<ApiResponse> resourseNotFoundException(ResourseNotFoundException ex){
 		String message = ex.getMessage();
 		ApiResponse apiResponse = new ApiResponse(message,false);
@@ -46,5 +46,13 @@ public class GlobalExceptionHandler {
 		ApiResponse apiResponse = new ApiResponse(msg,false);
 		return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.BAD_REQUEST);
 		
+	}
+	
+	
+	@ExceptionHandler(ApiException.class)
+	public ResponseEntity<ApiResponse> handleApiException(ApiException ex){
+		String message = ex.getMessage();
+		ApiResponse apiResponse = new ApiResponse(message,false);
+		return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.BAD_REQUEST);
 	}
 }

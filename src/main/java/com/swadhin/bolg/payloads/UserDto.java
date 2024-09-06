@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.swadhin.bolg.entities.Comment;
+import com.swadhin.bolg.entities.Role;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -35,4 +36,6 @@ public class UserDto {
 	private String password;
 	
 	private List<CommentDto> comments = new ArrayList<>();
+	
+	private List<RoleDto> roles = new ArrayList<>();
 }
