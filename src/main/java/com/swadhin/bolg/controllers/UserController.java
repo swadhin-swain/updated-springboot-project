@@ -1,7 +1,7 @@
 package com.swadhin.bolg.controllers;
 
 import java.util.List;
-import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import com.swadhin.bolg.payloads.ApiResponse;
 import com.swadhin.bolg.payloads.UserDto;
 import com.swadhin.bolg.services.UserService;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -31,6 +34,7 @@ public class UserController {
 	
 	
 	//POST - create user
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/")
 	public ResponseEntity<UserDto> createUser(@Valid@RequestBody UserDto userDto) {
@@ -68,7 +72,7 @@ public class UserController {
 	//GET - user get
 	@PreAuthorize("hasRole('NORMAL')")
 		@GetMapping("/{id}")
-		public ResponseEntity<UserDto> getAllUsers(@PathVariable("id") int id) {
+		public ResponseEntity<UserDto> getUser(@PathVariable("id") int id) {
 			return ResponseEntity.ok(this.userService.getUserById(id));
 		}
 }
